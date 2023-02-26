@@ -1,0 +1,14 @@
+// Import the framework
+@import '../node_modules/vanilla-framework';
+
+// Include all of Vanilla Framework
+@include vanilla;
+
+.color-teal {
+  color: $color-information;
+}
+
+.hr-dotted {
+  border-top: 1px dotted rgba(0, 0, 0, 0.15);
+  background: transparent;
+}
