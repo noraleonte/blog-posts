@@ -1,7 +1,7 @@
 import { Col, Row } from '@canonical/react-components'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
-import cardsTransformer from '../lib/cardsTransformer'
+import blogsTransformer from '../lib/blogsTransformer'
 import BlogCard from './BlogCard'
 
 const CardGrid = () => {
@@ -9,15 +9,21 @@ const CardGrid = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [isError, setIsError] = useState(false)
 
+  const shouldFetch = useRef(true)
+
   useEffect(() => {
-    fetch('https://people.canonical.com/~anthonydillon/wp-json/wp/v2/posts')
-      .then((res) => res.json())
-      .then((data) => setData(cardsTransformer(data)))
-      .catch((error) => {
-        console.error('Something went wrong while fetching', error)
-        setIsError(true)
-      })
-      .finally(setIsLoading(false))
+    if (shouldFetch.current) {
+      fetch('https://people.canonical.com/~anthonydillon/wp-json/wp/v2/posts')
+        .then((res) => res.json())
+        .then((data) => setData(blogsTransformer(data)))
+        .catch((error) => {
+          console.error('Something went wrong while fetching', error)
+          setIsError(true)
+        })
+        .finally(setIsLoading(false))
+
+      shouldFetch.current = false
+    }
   }, [])
 
   if (isError) {

@@ -1,5 +1,5 @@
 import { Card, Link } from '@canonical/react-components'
-import { format } from 'date-fns'
+import getFormattedDate from '../lib/getFormattedDate'
 
 const BlogCard = ({ blog }) => {
   return (
@@ -15,7 +15,7 @@ const BlogCard = ({ blog }) => {
       <p>
         <i>
           By <span className="color-teal">{blog._embedded.author[0].name}</span>{' '}
-          on {format(new Date(blog.date), 'd MMMM yyyy')}
+          on {getFormattedDate(blog.date)}
         </i>
       </p>
       <hr className="hr-dotted" />
