@@ -5,6 +5,7 @@
 @include vanilla;
 
 $color-information: #359ecf;
+$color-negative: #700f45;
 
 .color-teal {
   color: $color-information;
@@ -13,4 +14,22 @@ $color-information: #359ecf;
 .hr-dotted {
   border-top: 1px dotted rgba(0, 0, 0, 0.15);
   background: transparent;
+}
+
+.border-top-dark {
+  border-top: 3px solid rgba($color-negative, 0.5);
+}
+
+.p-card__image {
+  aspect-ratio: 9/5;
+  object-fit: cover;
+}
+
+.p-card__content {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-footer {
+  margin-top: auto;
 }

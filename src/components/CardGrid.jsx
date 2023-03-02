@@ -2,6 +2,7 @@ import { Col, Row } from '@canonical/react-components'
 import { useEffect, useRef, useState } from 'react'
 
 import blogsTransformer from '../lib/blogsTransformer'
+
 import BlogCard from './BlogCard'
 
 const CardGrid = () => {
@@ -35,12 +36,12 @@ const CardGrid = () => {
   }
 
   return (
-    <Row>
+    <Row className="u-equal-height">
       {isLoading || !data ? (
         <p>Loading...</p>
       ) : (
         data.map((blog) => (
-          <Col size={4} key={blog.id}>
+          <Col size={4} key={blog.id} className="u-equal-height">
             <BlogCard {...{ blog }} />
           </Col>
         ))
