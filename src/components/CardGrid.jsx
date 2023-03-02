@@ -1,5 +1,6 @@
-import { Col, Row } from '@canonical/react-components'
 import { useEffect, useRef, useState } from 'react'
+
+import { Col, Row } from '@canonical/react-components'
 
 import blogsTransformer from '../lib/blogsTransformer'
 
